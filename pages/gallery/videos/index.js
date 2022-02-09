@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import TweetsView from "components/VideosView";
 import DashboardLayout from "components/GalleryLayout";
-
+import queryAPI from "api/queryAPI";
 import {
   Box,
   useColorModeValue as mode,
@@ -21,29 +21,7 @@ export default function Tweets() {
   const toast = useToast();
   const [questionQuery, setQuestionQuery] = useState("");
   const [questionResponse, setQuestionResponse] = useState(null);
-
-  const queryAPI = async (user) => {
-    const values = {
-      handle: user?.replace("@", ""),
-    };
-    const response = await fetch(`/api/searchTwitterApi`, {
-      method: "POST",
-      body: JSON.stringify(values),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await response.json();
-    if (response.status === 200) {
-      setQuestionResponse(data);
-      toast({
-        status: "success",
-        description: `Data submited successfully for user @${user}`,
-        duration: 6000,
-      });
-    }
-  };
-
+  
   useEffect(() => {
     if (query.user !== "") {
       setQuestionQuery(query.user);
@@ -63,6 +41,7 @@ export default function Tweets() {
       });
     }
   };
+
   return (
     <DashboardLayout title="All Videos">
       <chakra.h1>Ask a new question:</chakra.h1>

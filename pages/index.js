@@ -1,6 +1,7 @@
 import * as React from "react";
 import Head from "next/head";
 import Footer from "../components/Footer";
+import {listAllQuery, runQuery, fetchQuery} from "./api/queryOracle"
 
 import {
   Box,
@@ -16,6 +17,7 @@ import {
   LightMode,
   useToast,
 } from "@chakra-ui/react";
+
 import { useRouter } from "next/dist/client/router";
 
 export default function Home() {
@@ -24,8 +26,16 @@ export default function Home() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    router.push(`dashboard/query?question=${question}`);
+    router.push(`gallery/query?question=${question}`);
   };
+
+  React.useEffect(() => {
+    // const query = queryOracle();
+    // const run = runQuery({"question": "is this working?"});
+    // const token = await run.json();
+    // const fetch = fetchQuery({token: token});
+    // console.log(run)
+  }, [])
 
   return (
     <>
@@ -51,11 +61,12 @@ export default function Home() {
               Ask the{" "}
               <Text as={"span"} color={"blue.400"}>
                 Sentient Machine
-              </Text>{" "} 
+              </Text>{" "}
             </chakra.h1>
             <chakra.h2 color={"gray.500"} fontSize={{ base: "1xl", md: "2xl" }}>
-
-            Looking for answers? The Oracle is the most powerful piece of software out there. Ask it anything and get answers now.            </chakra.h2>
+              Looking for answers? The Oracle is the most powerful piece of
+              software out there. Ask it anything and get answers now.{" "}
+            </chakra.h2>
             <Stack
               direction={"row"}
               spacing={3}
