@@ -38,7 +38,6 @@ const Tweet = (props) => {
 
 const TweetsView = ({ items }) => {
   const { query } = useRouter();
-  console.log("tweetsview items", items);
   return items ? (
     <Box>
       <chakra.h2 fontSize={24}>All creations</chakra.h2>

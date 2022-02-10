@@ -3,7 +3,12 @@ import { useRouter } from "next/router";
 
 import TweetsView from "components/VideosView";
 import DashboardLayout from "components/GalleryLayout";
-import {listAllQuery, runMockData, fetchQuery} from "pages/api/queryOracle"
+import {
+  listAllQuery,
+  runMockData,
+  runQuery,
+  fetchQuery,
+} from "pages/api/queryOracle";
 
 import {
   Box,
@@ -16,30 +21,32 @@ import {
   Input,
   Button,
 } from "@chakra-ui/react";
+import { on } from "events";
 
 export default function Tweets() {
   const { query } = useRouter();
   const toast = useToast();
   const [questionQuery, setQuestionQuery] = useState("");
-  const [queryResonse, setQueryResponse] = useState(null);
+  const [queryAllResponse, setAllQueryResponse] = useState(null);
+  const [tokenResponse, setTokenResponse] = useState("");
+  const [fetchResponse, setFetchResponse] = useState("");
 
   useEffect(() => {
     if (query.q !== "") {
-      setQuestionQuery(query.q);
-      const data = runMockData(query.q).then(
-        items => setQueryResponse(items)
-      )
+      const allData = runMockData(query.q).then((items) =>
+        setAllQueryResponse(items)
+      );
+      console.log('allData', allData);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onSubmit = async (e) => {
     try {
       e.preventDefault();
-      if (questionQuery) {
-        const data = await runMockData(questionQuery);
-        console.log(data)
-      }
+      const fdata = await runQuery({ question: questionQuery });
+      console.log("data submit", fdata);
+      setTokenResponse(fdata.token);
     } catch (e) {
       toast({
         status: "error",
@@ -48,6 +55,16 @@ export default function Tweets() {
       });
     }
   };
+
+  useEffect(() => {
+    if (tokenResponse !== "") {
+      // isComplete flag
+      // while !isCmpleted, sleep 1 second, query again
+      fetchQuery({ token: tokenResponse }).then((items) =>
+        setFetchResponse(JSON.stringify(items))
+      );
+    }
+  }, [tokenResponse])
 
   return (
     <DashboardLayout title="Videos">
@@ -93,7 +110,11 @@ export default function Tweets() {
         </chakra.form>
       </Box>
       <Box>
-        <TweetsView items={queryResonse} />
+        {tokenResponse ? <h1>Token Response: {tokenResponse}</h1> : <h1>Make a Search</h1>}
+        {fetchResponse ? <h1>Fetch Response: {fetchResponse}</h1> : <h1>Make a Search</h1>}
+      </Box>
+      <Box>
+        <TweetsView items={queryAllResponse} />
       </Box>
     </DashboardLayout>
   );
