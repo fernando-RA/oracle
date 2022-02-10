@@ -10,14 +10,7 @@ const queryAPI = async (user) => {
       },
     });
     const data = await response.json();
-    if (response.status === 200) {
-      setQuestionResponse(data);
-      toast({
-        status: "success",
-        description: `Data submited successfully for user @${user}`,
-        duration: 6000,
-      });
-    }
+    return data;
   };
 
 export default queryAPI;

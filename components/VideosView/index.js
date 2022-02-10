@@ -1,36 +1,45 @@
 import React from "react";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 import { Tr, Td, IconButton, Box, Select, chakra } from "@chakra-ui/react";
 import { AiFillEdit } from "react-icons/ai";
 import { DataTable } from "components/GalleryLayout";
 
 const TWEET_HEADERS = [
   {
-    text: "Tweet",
+    text: "Question",
     props: {},
   },
   {
-    text: "Link",
+    text: "Answer",
     props: {},
   },
   {
-    text: "Score",
+    text: "link to video",
     props: {},
   },
 ];
 
-const Tweet = ({ user, id, public_metrics, text }) => {
+const Tweet = (props) => {
   return (
     <Tr>
-      <Td>{text}</Td>
-      <Td><a href={`https://twitter.com/${user}/status/${id}`}>Link</a></Td>
-      <Td>{public_metrics.like_count + public_metrics.retweet_count + public_metrics.reply_count + public_metrics.quote_count}</Td>
+      <Td>{props.output.question}</Td>
+      <Td>{props.output.response}</Td>
+      <Td>
+        {
+          <Td>
+            <a href={`https://sentientmachine.online/${props.output.html}`}>
+              Link
+            </a>
+          </Td>
+        }
+      </Td>
     </Tr>
   );
 };
 
 const TweetsView = ({ items }) => {
   const { query } = useRouter();
+  console.log("tweetsview items", items);
   return items ? (
     <Box>
       <chakra.h2 fontSize={24}>Results</chakra.h2>
@@ -43,9 +52,10 @@ const TweetsView = ({ items }) => {
           </Tr>
         }
       >
-        {items.sortedByScore.map((item) => {
-          item.user = query.user;
-          return <Tweet {...item} />
+        {items.slice(0).reverse().map((item, index) => {
+          return item.status.status === "complete" ? (
+            <Tweet key={index} {...item} />
+          ) : null;
         })}
       </DataTable>
     </Box>

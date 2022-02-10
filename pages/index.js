@@ -1,7 +1,7 @@
 import * as React from "react";
 import Head from "next/head";
 import Footer from "../components/Footer";
-import {listAllQuery, runQuery, fetchQuery} from "./api/queryOracle"
+import { listAllQuery, runQuery, fetchQuery, runMockData } from "./api/queryOracle";
 
 import {
   Box,
@@ -26,16 +26,18 @@ export default function Home() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    router.push(`gallery/query?question=${question}`);
+    router.push(`gallery/videos?q=${question}`);
   };
 
   React.useEffect(() => {
+    const data = runMockData();
+    console.log(data);
     // const query = queryOracle();
     // const run = runQuery({"question": "is this working?"});
     // const token = await run.json();
     // const fetch = fetchQuery({token: token});
     // console.log(run)
-  }, [])
+  }, []);
 
   return (
     <>

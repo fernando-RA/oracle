@@ -3,7 +3,8 @@ import { useRouter } from "next/router";
 
 import TweetsView from "components/VideosView";
 import DashboardLayout from "components/GalleryLayout";
-import queryAPI from "api/queryAPI";
+import {listAllQuery, runMockData, fetchQuery} from "pages/api/queryOracle"
+
 import {
   Box,
   useColorModeValue as mode,
@@ -20,19 +21,25 @@ export default function Tweets() {
   const { query } = useRouter();
   const toast = useToast();
   const [questionQuery, setQuestionQuery] = useState("");
-  const [questionResponse, setQuestionResponse] = useState(null);
-  
+  const [queryResonse, setQueryResponse] = useState(null);
+
   useEffect(() => {
-    if (query.user !== "") {
-      setQuestionQuery(query.user);
-      queryAPI(query.user);
+    if (query.q !== "") {
+      setQuestionQuery(query.q);
+      const data = runMockData(query.q).then(
+        items => setQueryResponse(items)
+      )
     }
-  }, [query.user]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const onSubmit = async (e) => {
     try {
       e.preventDefault();
-      if (questionQuery) await queryAPI(questionQuery);
+      if (questionQuery) {
+        const data = await runMockData(questionQuery);
+        console.log(data)
+      }
     } catch (e) {
       toast({
         status: "error",
@@ -43,7 +50,7 @@ export default function Tweets() {
   };
 
   return (
-    <DashboardLayout title="All Videos">
+    <DashboardLayout title="Videos">
       <chakra.h1>Ask a new question:</chakra.h1>
       <Box display="flex" alignItems="center" justifyContent="flex-start">
         <chakra.form onSubmit={onSubmit}>
@@ -86,7 +93,7 @@ export default function Tweets() {
         </chakra.form>
       </Box>
       <Box>
-        <TweetsView items={questionResponse} />
+        <TweetsView items={queryResonse} />
       </Box>
     </DashboardLayout>
   );
