@@ -60,14 +60,13 @@ export default function Home() {
               lineHeight={"110%"}
               color="white"
             >
-              Ask the{" "}
+               The{" "}
               <Text as={"span"} color={"blue.400"}>
                 Sentient Machine
-              </Text>{" "}
+              </Text>{" "}...
             </chakra.h1>
             <chakra.h2 color={"gray.500"} fontSize={{ base: "1xl", md: "2xl" }}>
-              Looking for answers? The Oracle is the most powerful piece of
-              software out there. Ask it anything and get answers now.{" "}
+              Looking for answers? Ask it anything.{" "}
             </chakra.h2>
             <Stack
               direction={"row"}

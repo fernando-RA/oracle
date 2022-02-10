@@ -1,10 +1,9 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { Tr, Td, IconButton, Box, Select, chakra } from "@chakra-ui/react";
-import { AiFillEdit } from "react-icons/ai";
 import { DataTable } from "components/GalleryLayout";
 
-const TWEET_HEADERS = [
+const TABLE_HEADERS = [
   {
     text: "Question",
     props: {},
@@ -42,12 +41,12 @@ const TweetsView = ({ items }) => {
   console.log("tweetsview items", items);
   return items ? (
     <Box>
-      <chakra.h2 fontSize={24}>Results</chakra.h2>
+      <chakra.h2 fontSize={24}>All creations</chakra.h2>
       <DataTable
         HEADERS={
           <Tr bg="gray.300">
-            {TWEET_HEADERS.map((header) => (
-              <Td>{header.text}</Td>
+            {TABLE_HEADERS.map((header, i) => (
+              <Td key={i}>{header.text}</Td>
             ))}
           </Tr>
         }
