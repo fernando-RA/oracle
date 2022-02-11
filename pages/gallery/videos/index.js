@@ -21,7 +21,8 @@ import {
   Input,
   Button,
 } from "@chakra-ui/react";
-import { on } from "events";
+
+import { Player } from 'video-react';
 
 export default function Tweets() {
   const { query } = useRouter();
@@ -29,7 +30,8 @@ export default function Tweets() {
   const [questionQuery, setQuestionQuery] = useState("");
   const [queryAllResponse, setAllQueryResponse] = useState(null);
   const [tokenResponse, setTokenResponse] = useState("");
-  const [fetchResponse, setFetchResponse] = useState("");
+  const [fetchResponse, setFetchResponse] = useState(null);
+  const [isComplete,  setIsComplete] = useState("");
 
   useEffect(() => {
     if (query.q !== "") {
@@ -58,13 +60,12 @@ export default function Tweets() {
 
   useEffect(() => {
     if (tokenResponse !== "") {
-      // isComplete flag
       // while !isCmpleted, sleep 1 second, query again
       fetchQuery({ token: tokenResponse }).then((items) =>
-        setFetchResponse(JSON.stringify(items))
+        setFetchResponse([items])
       );
     }
-  }, [tokenResponse])
+  }, [tokenResponse, isComplete])
 
   return (
     <DashboardLayout title="Videos">
@@ -111,7 +112,12 @@ export default function Tweets() {
       </Box>
       <Box>
         {tokenResponse ? <h1>Token Response: {tokenResponse}</h1> : <h1>Make a Search</h1>}
-        {fetchResponse ? <h1>Fetch Response: {fetchResponse}</h1> : <h1>Make a Search</h1>}
+        {fetchResponse ? <div>
+          <h1>{console.log(fetchResponse)}</h1>
+          <Player
+          src={`https://sentientmachine.online/${fetchResponse[0].output.video}`}
+        />
+        </div> : <h1>Make a Search</h1>}
       </Box>
       <Box>
         <TweetsView items={queryAllResponse} />

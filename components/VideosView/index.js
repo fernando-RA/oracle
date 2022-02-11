@@ -2,6 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import { Tr, Td, IconButton, Box, Select, chakra } from "@chakra-ui/react";
 import { DataTable } from "components/GalleryLayout";
+import { Player } from "video-react";
 
 const TABLE_HEADERS = [
   {
@@ -25,11 +26,9 @@ const Tweet = (props) => {
       <Td>{props.output.response}</Td>
       <Td>
         {
-          <Td>
-            <a href={`https://sentientmachine.online/${props.output.html}`}>
-              Link
-            </a>
-          </Td>
+          <Player
+            src={`https://sentientmachine.online/${props.output.video}`}
+          />
         }
       </Td>
     </Tr>
@@ -50,11 +49,14 @@ const TweetsView = ({ items }) => {
           </Tr>
         }
       >
-        {items.slice(0).reverse().map((item, index) => {
-          return item.status.status === "complete" ? (
-            <Tweet key={index} {...item} />
-          ) : null;
-        })}
+        {items
+          .slice(0)
+          .reverse()
+          .map((item, index) => {
+            return item.status.status === "complete" ? (
+              <Tweet key={index} {...item} />
+            ) : null;
+          })}
       </DataTable>
     </Box>
   ) : null;
