@@ -22,7 +22,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-import { Player } from 'video-react';
+import { Player } from "video-react";
 
 export default function Tweets() {
   const { query } = useRouter();
@@ -31,14 +31,14 @@ export default function Tweets() {
   const [queryAllResponse, setAllQueryResponse] = useState(null);
   const [tokenResponse, setTokenResponse] = useState("");
   const [fetchResponse, setFetchResponse] = useState(null);
-  const [isComplete,  setIsComplete] = useState("");
+  const [isComplete, setIsComplete] = useState("");
 
   useEffect(() => {
     if (query.q !== "") {
       const allData = runMockData(query.q).then((items) =>
         setAllQueryResponse(items)
       );
-      console.log('allData', allData);
+      console.log("allData", allData);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -65,7 +65,7 @@ export default function Tweets() {
         setFetchResponse([items])
       );
     }
-  }, [tokenResponse, isComplete])
+  }, [tokenResponse, isComplete]);
 
   return (
     <DashboardLayout title="Videos">
@@ -111,13 +111,25 @@ export default function Tweets() {
         </chakra.form>
       </Box>
       <Box>
-        {tokenResponse ? <h1>Token Response: {tokenResponse}</h1> : <h1>Make a Search</h1>}
-        {fetchResponse ? <div>
-          <h1>{console.log(fetchResponse)}</h1>
-          <Player
-          src={`https://sentientmachine.online/${fetchResponse[0].output.video}`}
-        />
-        </div> : <h1>Make a Search</h1>}
+        {tokenResponse ? (
+          <h1>Token Response: {tokenResponse}</h1>
+        ) : (
+          <h1>Make a Search</h1>
+        )}
+        {fetchResponse ? (
+          <div>
+            <h1>{console.log(fetchResponse)}</h1>
+            {fetchResponse.status === "complete" ? (
+              <Player
+                src={`https://sentientmachine.online/${fetchResponse[0].output.video}`}
+              />
+            ) : (
+              <h1>Loading...</h1>
+            )}
+          </div>
+        ) : (
+          <h1>Make a Search</h1>
+        )}
       </Box>
       <Box>
         <TweetsView items={queryAllResponse} />

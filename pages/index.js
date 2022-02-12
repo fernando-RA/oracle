@@ -31,12 +31,7 @@ export default function Home() {
 
   React.useEffect(() => {
     const data = runMockData();
-    console.log(data);
-    // const query = queryOracle();
-    // const run = runQuery({"question": "is this working?"});
-    // const token = await run.json();
-    // const fetch = fetchQuery({token: token});
-    // console.log(run)
+    console.log('data', data);
   }, []);
 
   return (

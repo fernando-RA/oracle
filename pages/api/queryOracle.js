@@ -4,56 +4,48 @@ const password = "jf288jsdbbvga345xaa1319";
 
 export const fetchQuery = async (req, res) => {
   const token = req.token;
-  console.log('token', token);
+  console.log("token", token);
   try {
-    const response = {
-      status: { status: "complete" },
-      config: {
-        question: "what is beyound the thin veil of the material world?",
-        stylegan_template: true,
-        password: "jf288jsdbbvga345xaa1319",
-        username: "",
+    const response = await fetch(`${link}/fetch`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-      output: {
-        question: "what is beyound the thin veil of the material world?",
-        response: "Nothing.",
-        video: "output/result_44416_final.mp4",
-        html: "output/result_44416.html",
-      },
-    };
-    return response;
+      body: JSON.stringify({
+        token: token,
+        password: password,
+      }),
+    });
+
+    const data = await response.json();
+    console.log('data', data);
+    return data;
   } catch (e) {
     console.log(e, "error");
   }
 };
 
 export const runQuery = async (req) => {
-
+  console.log(req);
   const question = req.question;
-  console.log(question)
   try {
-    const response = {
-      status: { status: "queued", queue_position: 1 },
-      token: "_1644532575_ho7odsxn",
-    };
-
-    // const response = await fetch(`${link}/run`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     question: question,
-    //     password: password,
-    //   }),
-    // });
-    return response;
+    const response = await fetch(`${link}/run`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        question: question,
+        password: password,
+      }),
+    });
+    return await response.json();
   } catch (e) {
     console.log(e, "error");
   }
 };
 
-export const listAllQuery = async (req, res) => {
+export const listAllQuery = async (req) => {
   try {
     const response = await fetch(`${link}/run`, {
       method: "GET",
