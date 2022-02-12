@@ -1,5 +1,5 @@
 import mockData from "./mockData";
-const link = "https://sentientmachine.online/";
+const link = "https://sentientmachine.online";
 const password = "jf288jsdbbvga345xaa1319";
 
 export const fetchQuery = async (req, res) => {
@@ -47,23 +47,20 @@ export const runQuery = async (req) => {
 
 export const listAllQuery = async (req) => {
   try {
-    const response = await fetch(`${link}/run`, {
+    const response = await fetch(`${link}/output/summary.json`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
       },
     });
+    console.log("response listAllQuery", response);
     return await response.json();
   } catch (e) {
     console.log(e, "error");
   }
 };
 
-export const runMockData = async (req, res) => {
-  const data = mockData;
-  return data;
-};
 
 // curl https://sentientmachine.online/run -k -d '{"question": "What are 3 ways to get cash?", "password": "jf288jsdbbvga345xaa1319"}'  -H 'Content-Type: application/json'\n
 // curl https://sentientmachine.online/fetch -k -d '{"token": "_1644274202_7wzzh891", "password": "jf288jsdbbvga345xaa1319"}'  -H 'Content-Type: application/json'\n

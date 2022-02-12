@@ -35,7 +35,7 @@ export default function Tweets() {
 
   useEffect(() => {
     if (query.q !== "") {
-      const allData = runMockData(query.q).then((items) =>
+      const allData = listAllQuery().then((items) =>
         setAllQueryResponse(items)
       );
       console.log("allData", allData);
@@ -60,12 +60,19 @@ export default function Tweets() {
 
   useEffect(() => {
     if (tokenResponse !== "") {
-      // while !isCmpleted, sleep 1 second, query again
-      fetchQuery({ token: tokenResponse }).then((items) =>
-        setFetchResponse([items])
-      );
+      while (!isComplete) {
+        setTimeout(() => {
+          fetchQuery({ token: tokenResponse }).then((items) => {
+            items.output.status === "queue"
+              ? setIsComplete(false)
+              : setIsComplete(true);
+            setFetchResponse([items]);
+          }, 1000);
+        });
+      }
     }
-  }, [tokenResponse, isComplete]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tokenResponse]);
 
   return (
     <DashboardLayout title="Videos">
@@ -124,7 +131,10 @@ export default function Tweets() {
                 src={`https://sentientmachine.online/${fetchResponse[0].output.video}`}
               />
             ) : (
-              <h1>Loading...</h1>
+              <h1>
+                Loading...
+                {`Question: ${fetchResponse.config.question}, Token: ${fetchResponse.status.status}`}{" "}
+              </h1>
             )}
           </div>
         ) : (

@@ -28,12 +28,6 @@ export default function Home() {
     e.preventDefault();
     router.push(`gallery/videos?q=${question}`);
   };
-
-  React.useEffect(() => {
-    const data = runMockData();
-    console.log('data', data);
-  }, []);
-
   return (
     <>
       <Box bg="gray.800">
@@ -57,11 +51,11 @@ export default function Home() {
             >
                The{" "}
               <Text as={"span"} color={"blue.400"}>
-                Sentient Machine
+                Oracle
               </Text>{" "}...
             </chakra.h1>
             <chakra.h2 color={"gray.500"} fontSize={{ base: "1xl", md: "2xl" }}>
-              Looking for answers? Ask it anything.{" "}
+              Looking for prophetic predictions? Ask the sentient machines.{" "}
             </chakra.h2>
             <Stack
               direction={"row"}
