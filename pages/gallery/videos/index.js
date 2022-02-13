@@ -59,19 +59,17 @@ export default function Tweets() {
   };
 
   useEffect(() => {
-    if (tokenResponse !== "") {
-      while (!isComplete) {
-        setTimeout(() => {
-          fetchQuery({ token: tokenResponse }).then((items) => {
-            items.output.status === "queue"
-              ? setIsComplete(false)
-              : setIsComplete(true);
-            setFetchResponse([items]);
-          }, 1000);
-        });
-      }
+    if (tokenResponse !== "" && !isComplete) {
+      setTimeout(() => {
+        fetchQuery({ token: tokenResponse }).then((items) => {
+          items.output.status === "queue"
+            ? setIsComplete(false)
+            : setIsComplete(true);
+          setFetchResponse([items]);
+        }, 1000);
+      });
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tokenResponse]);
 
   return (
