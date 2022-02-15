@@ -4,6 +4,7 @@ import { Tr, Td, IconButton, Box, Select, chakra } from "@chakra-ui/react";
 import { DataTable } from "components/GalleryLayout";
 import { Player } from "video-react";
 
+
 const TABLE_HEADERS = [
   {
     text: "Question",
@@ -47,19 +48,15 @@ const TweetsView = ({ items }) => {
           .map((item, index) => {
             return item.status.status === "complete" ? (
               <div className="grid-item" key={index}>
-                {
-                  <div>
-                    <div>{item.output.question}</div>
-                    <div>{item.output.response}</div>
-                    <div>
-                      {
-                        <Player
-                          src={`https://sentientmachine.online/${item.output.video}`}
-                        />
-                      }
-                    </div>
-                  </div>
-                }
+                <div>{item.output.question}</div>
+                <div>{item.output.response}</div>
+                <div>
+                  {
+                    <Player
+                      src={`https://sentientmachine.online/${item.output.video}`}
+                    />
+                  }
+                </div>
               </div>
             ) : null;
           })}
