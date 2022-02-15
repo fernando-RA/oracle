@@ -1,27 +1,18 @@
+
 .grid-container {
     display: grid;
+    grid-template-columns: auto auto auto auto;
     grid-gap: 10px;
     background-color: #2196F3;
     padding: 10px;
-}
-
-.grid-item {
+  }
+  
+  .grid-item {
     text-align: center;
-    padding: 20px;
+    padding: 20px 0;
     font-size: 30px;
-}
+  }
 
-.item1 {
-    grid-column: 1 / span 2;
-    grid-row: 1;
-}
-
-.item2 {
-    grid-column: 3;
-    grid-row: 1 / span 2;
-}
-
-.item5 {
-    grid-column: 1 / span 3;
-    grid-row: 3;
-}
+  .player {
+      border: 8px solid #ccc;
+  }
