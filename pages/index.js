@@ -21,7 +21,7 @@ import {
 import { useRouter } from "next/dist/client/router";
 
 export default function Home() {
-  const [question, setquestion] = React.useState("");
+  const [question, setQuestion] = React.useState("");
   const router = useRouter();
 
   const onSubmit = (e) => {
@@ -85,7 +85,7 @@ export default function Home() {
                         placeholder=""
                         focusBorderColor="blue.200"
                         onChange={(e) => {
-                          setquestion(e.target.value);
+                          setQuestion(e.target.value);
                         }}
                       />
                     </Box>

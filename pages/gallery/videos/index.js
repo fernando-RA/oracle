@@ -38,9 +38,8 @@ export default function Tweets() {
       const allData = listAllQuery().then((items) =>
         setAllQueryResponse(items)
       );
-      console.log("allData", allData);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onSubmit = async (e) => {
@@ -59,17 +58,14 @@ export default function Tweets() {
   };
 
   useEffect(() => {
-    if (tokenResponse !== "" && !isComplete) {
-      setTimeout(() => {
-        fetchQuery({ token: tokenResponse }).then((items) => {
-          items.output.status === "queue"
-            ? setIsComplete(false)
-            : setIsComplete(true);
-          setFetchResponse([items]);
-        }, 1000);
+    if (tokenResponse !== "") {
+      fetchQuery({ token: tokenResponse }).then((items) => {
+        items.output.status === "queue"
+          ? setIsComplete(false)
+          : setIsComplete(true);
+        setFetchResponse([items]);
       });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tokenResponse]);
 
   return (
