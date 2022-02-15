@@ -40,24 +40,30 @@ const TweetsView = ({ items }) => {
   return items ? (
     <Box>
       <chakra.h2 fontSize={24}>All creations</chakra.h2>
-      <DataTable
-        HEADERS={
-          <Tr bg="gray.300">
-            {TABLE_HEADERS.map((header, i) => (
-              <Td key={i}>{header.text}</Td>
-            ))}
-          </Tr>
-        }
-      >
+      <div className="grid-container">
         {items
           .slice(0)
           .reverse()
           .map((item, index) => {
             return item.status.status === "complete" ? (
-              <Tweet key={index} {...item} />
+              <div className="grid-item" key={index}>
+                {
+                  <div>
+                    <div>{item.output.question}</div>
+                    <div>{item.output.response}</div>
+                    <div>
+                      {
+                        <Player
+                          src={`https://sentientmachine.online/${item.output.video}`}
+                        />
+                      }
+                    </div>
+                  </div>
+                }
+              </div>
             ) : null;
           })}
-      </DataTable>
+      </div>
     </Box>
   ) : null;
 };

@@ -10,11 +10,6 @@ import {
   useColorModeValue as mode,
   chakra,
 } from "@chakra-ui/react";
-import { BiBuoy, BiCog, BiHome, BiSearch, BiSend } from "react-icons/bi";
-import { BsFillPeopleFill } from "react-icons/bs";
-
-import NavGroup from "./NavGroup";
-import NavItem from "./NavItem";
 import DataTable from "./DataTable"
 
 const DashboardLayout = ({
