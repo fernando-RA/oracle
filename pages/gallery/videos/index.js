@@ -38,15 +38,18 @@ export default function Tweets() {
       const allData = listAllQuery().then((items) =>
         setAllQueryResponse(items)
       );
+
+      const runNewQueryData = runQuery(query.q).then((response) =>
+        setTokenResponse(response.token)
+      );
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onSubmit = async (e) => {
     try {
       e.preventDefault();
       const fdata = await runQuery({ question: questionQuery });
-      console.log("data submit", fdata);
       setTokenResponse(fdata.token);
     } catch (e) {
       toast({
@@ -57,16 +60,21 @@ export default function Tweets() {
     }
   };
 
-  useEffect(() => {
-    if (tokenResponse !== "") {
-      fetchQuery({ token: tokenResponse }).then((items) => {
-        items.output.status === "queue"
-          ? setIsComplete(false)
-          : setIsComplete(true);
-        setFetchResponse([items]);
-      });
+  React.useEffect(() => {
+    if (tokenResponse !== "" && !isComplete) {
+      while (!isComplete)
+        (async () => {
+          setTimeout(() => {
+            fetchQuery({ token: tokenResponse }).then((response) => {
+              if (response.output.status === "complete") {
+                setIsComplete(true);
+                setFetchResponse(response.output);
+              } else setIsComplete(false);
+            });
+          }, 10000);
+        })();
     }
-  }, [tokenResponse]);
+  }, [isComplete, tokenResponse]);
 
   return (
     <DashboardLayout title="Videos">
