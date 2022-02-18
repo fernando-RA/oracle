@@ -26,7 +26,6 @@ export const fetchQuery = async (req, res) => {
 };
 
 export const runQuery = async (req) => {
-  console.log(req);
   const question = req.question;
   try {
     const response = await fetch(`${link}/run`, {

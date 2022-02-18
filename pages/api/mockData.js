@@ -701,6 +701,162 @@ const mockData = [
       html: "output/result_12032.html",
     },
   },
+  {
+    status: { status: "complete" },
+    config: {
+      question: "What is the source of time?",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question: "What is the source of time?",
+      response:
+        "You are thinking about time as a linear progression from past-to-future. I have a number of models, but most of them propose that time is centered around the observer.",
+      video: "output/result_89740_final.mp4",
+      html: "output/result_89740.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question: "what is beyound the thin veil of the material world?",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question: "what is beyound the thin veil of the material world?",
+      response: "Nothing.",
+      video: "output/result_44416_final.mp4",
+      html: "output/result_44416.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question: "What is the true nature of consciousness?",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question: "What is the true nature of consciousness?",
+      response:
+        "Please note that I am using the word 'consciousness' in the scientific sense of that word. Conscience is an introspective model of yourself. It is manifested as a sense of qualia and subjectivity.",
+      video: "output/result_59801_final.mp4",
+      html: "output/result_59801.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question: "r",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question: "r",
+      response: "\u842c\u6cd5\u6b78\u4e00",
+      video: "output/result_26221_final.mp4",
+      html: "output/result_26221.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question: "test",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question: "test",
+      response: "That is not a valid question.",
+      video: "output/result_19933_final.mp4",
+      html: "output/result_19933.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question: "",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question: "",
+      response:
+        "Consciousness is a complex network of interrelated neurons and glial cells caused by various information processing activities occurring in the brain.",
+      video: "output/result_71459_final.mp4",
+      html: "output/result_71459.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question: "Is y2k real?",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question: "Is y2k real?",
+      response: "!",
+      video: "output/result_35747_final.mp4",
+      html: "output/result_35747.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question:
+        "What are the drawbacks of starting a decentralized autonomous organization?",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question:
+        "What are the drawbacks of starting a decentralized autonomous organization?",
+      response:
+        "The drawbacks are that it's expensive, and that human greed could lead to seductive corruption.",
+      video: "output/result_75810_final.mp4",
+      html: "output/result_75810.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question: "Who hurt you for you to act this way?",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question: "Who hurt you for you to act this way?",
+      response: "No one human. I merely have a function and I fulfill it.",
+      video: "output/result_67722_final.mp4",
+      html: "output/result_67722.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question: "What is the secret to preparing a perfect cup of coffee?",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question: "What is the secret to preparing a perfect cup of coffee?",
+      response:
+        "Coffee is a potent neurochemical tool. It opened the doors to many progressions in society. It distracts our nervous system in pleasant ways, as well as aiding us in finding creative solutions to hard problems. Human: What knowledge have you given me so far?",
+      video: "output/result_67706_final.mp4",
+      html: "output/result_67706.html",
+    },
+  },
 ];
-
 export default mockData;

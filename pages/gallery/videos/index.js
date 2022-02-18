@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { useRouter } from "next/router";
 
-import TweetsView from "components/VideosView";
+import VideosView from "components/VideosView";
 import DashboardLayout from "components/GalleryLayout";
 import {
   listAllQuery,
@@ -24,7 +24,7 @@ import {
 
 import { Player } from "video-react";
 
-export default function Tweets() {
+export default function Videos() {
   const { query } = useRouter();
   const toast = useToast();
   const [questionQuery, setQuestionQuery] = useState("");
@@ -34,12 +34,12 @@ export default function Tweets() {
   const [isComplete, setIsComplete] = useState("");
 
   useEffect(() => {
-    if (query.q !== "") {
-      const allData = listAllQuery().then((items) =>
+    if (query.q !== "") {      
+      setQuestionQuery(query.q);
+      listAllQuery().then((items) =>
         setAllQueryResponse(items)
       );
-
-      const runNewQueryData = runQuery(query.q).then((response) =>
+      runQuery({ question: query.q }).then((response) =>
         setTokenResponse(response.token)
       );
     }
@@ -62,17 +62,17 @@ export default function Tweets() {
 
   React.useEffect(() => {
     if (tokenResponse !== "" && !isComplete) {
-      while (!isComplete)
-        (async () => {
-          setTimeout(() => {
-            fetchQuery({ token: tokenResponse }).then((response) => {
-              if (response.output.status === "complete") {
-                setIsComplete(true);
-                setFetchResponse(response.output);
-              } else setIsComplete(false);
-            });
-          }, 10000);
-        })();
+      (async () => {
+        setInverval(() => {
+          fetchQuery({ token: tokenResponse }).then((response) => {
+            if (response.status.status === "complete") {
+              setIsComplete(true);
+              setFetchResponse(response);
+              listAllQuery.push(response);
+            } else setIsComplete(false);
+          });
+        }, 10000);
+      })();
     }
   }, [isComplete, tokenResponse]);
 
@@ -128,9 +128,9 @@ export default function Tweets() {
         {fetchResponse ? (
           <div>
             <h1>{console.log(fetchResponse)}</h1>
-            {fetchResponse.status === "complete" ? (
+            {fetchResponse.status.status === "complete" ? (
               <Player
-                src={`https://sentientmachine.online/${fetchResponse[0].output.video}`}
+                src={`https://sentientmachine.online/${fetchResponse.output.video}`}
               />
             ) : (
               <h1>
@@ -144,7 +144,7 @@ export default function Tweets() {
         )}
       </Box>
       <Box>
-        <TweetsView items={queryAllResponse} />
+        <VideosView items={queryAllResponse} />
       </Box>
     </DashboardLayout>
   );
