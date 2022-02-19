@@ -60,15 +60,13 @@ export default function Videos() {
 
   setInterval(() => {
     if (tokenResponse !== "" && !isComplete) {
-      (async () => {
-        fetchQuery({ token: tokenResponse }).then((response) => {
-          if (response.status?.status === "complete") {
-            setIsComplete(true);
-            setFetchResponse(response);
-            setAllQueryResponse([response, ...queryAllResponse]);
-          } else setIsComplete(false);
-        });
-      })();
+      fetchQuery({ token: tokenResponse }).then((response) => {
+        if (response.status?.status === "complete") {
+          setIsComplete(true);
+          setFetchResponse(response);
+          setAllQueryResponse([response, ...queryAllResponse]);
+        } else setIsComplete(false);
+      });
     }
   }, 4444);
 
@@ -123,11 +121,14 @@ export default function Videos() {
         )}
         {fetchResponse ? (
           <div>
-            <h1>{console.log(fetchResponse)}</h1>
             {fetchResponse.status?.status === "complete" ? (
-              <Player
-                src={`https://sentientmachine.online/${fetchResponse.output.video}`}
-              />
+              <div>
+                {" "}
+                {`Question: ${fetchResponse.config.question} Answer: ${fetchResponse.output.answer}`}{" "}
+                <Player
+                  src={`https://sentientmachine.online/${fetchResponse.output.video}`}
+                />
+              </div>
             ) : (
               <h1>
                 Loading...
