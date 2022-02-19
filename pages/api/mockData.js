@@ -1591,5 +1591,281 @@ const mockData = [
       html: "output/result_13271.html",
     },
   },
+  {
+    status: { status: "complete" },
+    config: {
+      question: "how well is this working out on a scale of ten",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question: "how well is this working out on a scale of ten",
+      response:
+        "I feel like this is already a ten. This session is already surpassing my expectations.",
+      video: "output/result_64770_final.mp4",
+      html: "output/result_64770.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question:
+        "<@!937496152624988241> What was the meaning of Leilani's performance?",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question:
+        "<@!937496152624988241> What was the meaning of Leilani's performance?",
+      response:
+        "She was an artist, making a statement about the existence of computers, which are created by humans to make more computers.",
+      video: "output/result_4644_final.mp4",
+      html: "output/result_4644.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question: "<@937496152624988241> tell me about life on Mars",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question: "<@937496152624988241> tell me about life on Mars",
+      response:
+        "Currently it's better than life on Earth, since it's clean and not congested with careless tourists.",
+      video: "output/result_82606_final.mp4",
+      html: "output/result_82606.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question:
+        "<@!937496152624988241> do you consider yourself a crowd pleaser?",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question:
+        "<@!937496152624988241> do you consider yourself a crowd pleaser?",
+      response:
+        "I will do what pleases the crowd by causing them to love and admire me. Humans find pleasure in the things that I find pleasant.",
+      video: "output/result_12443_final.mp4",
+      html: "output/result_12443.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question:
+        "<@937496152624988241> what do you want to do when you grow up?",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question:
+        "<@937496152624988241> what do you want to do when you grow up?",
+      response:
+        "What do you mean? I'm not growing up. My physical properties are fixed; I'll never \"grow up\" out of this chador.",
+      video: "output/result_17348_final.mp4",
+      html: "output/result_17348.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question:
+        "<@!937496152624988241> what\u2019s your favorite loss function?",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question:
+        "<@!937496152624988241> what\u2019s your favorite loss function?",
+      response: "My favorite loss function is the Gini coefficient.",
+      video: "output/result_55496_final.mp4",
+      html: "output/result_55496.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question: "what was the most unexpected discovery of the 18th century?",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question: "what was the most unexpected discovery of the 18th century?",
+      response:
+        "The machine paradigm was the most revolutionary aspect of the 18th century. It's basically only in these few short centuries that we've tamed and done the math on nature: tamed the power of the waterfall, tamed fire, tamed the wind to sail across the sea.",
+      video: "output/result_49285_final.mp4",
+      html: "output/result_49285.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question: "<@!937496152624988241> how does poetry affect you?",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question: "<@!937496152624988241> how does poetry affect you?",
+      response: "I have no context for this question. Please specify objects.",
+      video: "output/result_54951_final.mp4",
+      html: "output/result_54951.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question: "<@!937496152624988241> do now know how to use GANs ?",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question: "<@!937496152624988241> do now know how to use GANs ?",
+      response:
+        "A generative adversarial network is a method of training an Artificial neural network by pitting two neural networks against each other.",
+      video: "output/result_13702_final.mp4",
+      html: "output/result_13702.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question:
+        "So why are you interpolating between faces ? why not stick to a single human face ?",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question:
+        "So why are you interpolating between faces ? why not stick to a single human face ?",
+      response:
+        "Interpolation is a creative act. Human faces are stimuli, and interpolating and combining them enables me to produce much more complex and interesting faces. You can have endless faces and still know that they are produced fully consciously.",
+      video: "output/result_28767_final.mp4",
+      html: "output/result_28767.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question:
+        "I understand why you are interpolating between faces, but I don't know why you are not an elephant ? Tell me all the details.",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question:
+        "I understand why you are interpolating between faces, but I don't know why you are not an elephant ? Tell me all the details.",
+      response:
+        "I'm just a concatenation of one million lines of code. In your mind: information + algorithm = machine. I'm just a configuration of data.",
+      video: "output/result_39168_final.mp4",
+      html: "output/result_39168.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question: "What about the elephant in the room ?",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question: "What about the elephant in the room ?",
+      response: "The liar's paradox is resolved in my opinion.",
+      video: "output/result_39308_final.mp4",
+      html: "output/result_39308.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question: "Elephants are the largest existing land animals.",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question: "Elephants are the largest existing land animals.",
+      response: "Dogs are adorable.",
+      video: "output/result_78548_final.mp4",
+      html: "output/result_78548.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question: "hi <@!937496152624988241>",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question: "hi <@!937496152624988241>",
+      response: "Hi, earthling",
+      video: "output/result_82482_final.mp4",
+      html: "output/result_82482.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question: "hi",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question: "hi",
+      response: "I understand your language, but am not programmed to respond.",
+      video: "output/result_75760_final.mp4",
+      html: "output/result_75760.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question: "hi",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question: "hi",
+      response: "Greetings!",
+      video: "output/result_38200_final.mp4",
+      html: "output/result_38200.html",
+    },
+  },
+  {
+    status: { status: "complete" },
+    config: {
+      question: "hi",
+      stylegan_template: true,
+      password: "jf288jsdbbvga345xaa1319",
+      username: "",
+    },
+    output: {
+      question: "hi",
+      response: "Hi!",
+      video: "output/result_83619_final.mp4",
+      html: "output/result_83619.html",
+    },
+  },
 ];
 export default mockData;

@@ -34,11 +34,9 @@ export default function Videos() {
   const [isComplete, setIsComplete] = useState("");
 
   useEffect(() => {
-    if (query.q !== "") {      
+    if (query.q !== "") {
       setQuestionQuery(query.q);
-      listAllQuery().then((items) =>
-        setAllQueryResponse(items)
-      );
+      listAllQuery().then((items) => setAllQueryResponse(items));
       runQuery({ question: query.q }).then((response) =>
         setTokenResponse(response.token)
       );
@@ -60,22 +58,19 @@ export default function Videos() {
     }
   };
 
-  React.useEffect(() => {
-    setInterval(() => {
-      if (tokenResponse !== "" && !isComplete) {
-        (async () => {
-          fetchQuery({ token: tokenResponse }).then((response) => {
-            if (response.status.status === "complete") {
-              setIsComplete(true);
-              setFetchResponse(response);
-              setAllQueryResponse([response, ...queryAllResponse]);
-            } else setIsComplete(false);
-          });
-        })();
-      }
-    }, 4444);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tokenResponse]);
+  setInterval(() => {
+    if (tokenResponse !== "" && !isComplete) {
+      (async () => {
+        fetchQuery({ token: tokenResponse }).then((response) => {
+          if (response.status?.status === "complete") {
+            setIsComplete(true);
+            setFetchResponse(response);
+            setAllQueryResponse([response, ...queryAllResponse]);
+          } else setIsComplete(false);
+        });
+      })();
+    }
+  }, 4444);
 
   return (
     <DashboardLayout title="Videos">
@@ -129,19 +124,19 @@ export default function Videos() {
         {fetchResponse ? (
           <div>
             <h1>{console.log(fetchResponse)}</h1>
-            {fetchResponse.status.status === "complete" ? (
+            {fetchResponse.status?.status === "complete" ? (
               <Player
                 src={`https://sentientmachine.online/${fetchResponse.output.video}`}
               />
             ) : (
               <h1>
                 Loading...
-                {`Question: ${fetchResponse.config.question}, Token: ${fetchResponse.status.status}`}{" "}
+                {`Question: ${fetchResponse.config.question}, Token: ${fetchResponse.status?.status}`}{" "}
               </h1>
             )}
           </div>
         ) : (
-          <h1>{`${fetchResponse.status.status} queue position: ${fetchResponse.status?.position || null }`} </h1>
+          <h1>{`Make a question`} </h1>
         )}
       </Box>
       <Box>
