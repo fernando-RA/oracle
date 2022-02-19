@@ -61,20 +61,21 @@ export default function Videos() {
   };
 
   React.useEffect(() => {
-    if (tokenResponse !== "" && !isComplete) {
-      (async () => {
-        setInverval(() => {
+    setInterval(() => {
+      if (tokenResponse !== "" && !isComplete) {
+        (async () => {
           fetchQuery({ token: tokenResponse }).then((response) => {
             if (response.status.status === "complete") {
               setIsComplete(true);
               setFetchResponse(response);
-              listAllQuery.push(response);
+              setAllQueryResponse([response, ...queryAllResponse]);
             } else setIsComplete(false);
           });
-        }, 10000);
-      })();
-    }
-  }, [isComplete, tokenResponse]);
+        })();
+      }
+    }, 4444);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tokenResponse]);
 
   return (
     <DashboardLayout title="Videos">
@@ -140,7 +141,7 @@ export default function Videos() {
             )}
           </div>
         ) : (
-          <h1>Make a Search</h1>
+          <h1>{`${fetchResponse.status.status} queue position: ${fetchResponse.status?.position || null }`} </h1>
         )}
       </Box>
       <Box>
